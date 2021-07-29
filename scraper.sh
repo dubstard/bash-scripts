@@ -22,7 +22,7 @@ done
 
 echo "downloading website: $website"
 
-wget  -r -pk $website
+wget -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" --no-check-certificate -r -pk $website
 
 
 grep -RwoE '0x.{40}' $website | cut -d ":" -f2 | grep -v '["()$"%&= ,]'| awk '!seen[$0]++' > $website.txt
